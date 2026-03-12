@@ -17,7 +17,8 @@ param(
     [string]$LogFile = "$PSScriptRoot\mic_lock.log"
 )
 
-# CoreAudio WASAPI COM interop type definition
+# Thread-safe COM endpoint event sink with loop guards
+
 $csharpCode = @'
 using System;
 using System.Runtime.InteropServices;
@@ -218,3 +219,4 @@ try {
     $watcher.Dispose()
     Log-Message "MicLock Event stopped."
 }
+
